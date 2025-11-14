@@ -1,0 +1,72 @@
+<h2>Welcome {{ user?.fullname }}</h2>
+<button (click)="logout()" class="logout-icon">
+  🔓
+</button>
+
+<div class="controls">
+  <input
+    type="text"
+    [(ngModel)]="searchTerm"
+    (input)="search()"
+    placeholder="Search people..."
+  />
+
+  <select [(ngModel)]="sortBy" (change)="sort()">
+    <option value="name">Sort by Name</option>
+    <option value="available">Sort by Availability</option>
+  </select>
+
+  <div class="date-picker">
+    <label for="startDate">Start Date:</label>
+    <input
+      id="startDate"
+      type="date"
+      [(ngModel)]="startDate"
+      (change)="onDateChange()"
+    />
+  </div>
+</div>
+
+
+<div class="summary">
+  <div class="summary-item available">
+    ✔️ Available: {{ summary.available }}
+  </div>
+  <div class="summary-item booked">
+    📘 Booked: {{ summary.booked }}
+  </div>
+  <div class="summary-item unknown">
+    🟠 Haven’t Indicated: {{ summary.unknown }}
+  </div>
+  <div class="summary-item vacation">
+    🏖️ Vacation: {{ summary.vacation }}
+  </div>
+  <div class="summary-item unavailable">
+    ❌ Unavailable: {{ summary.unavailable }}
+  </div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th *ngFor="let date of dates">{{ date }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let person of filteredPeople">
+      <td>{{ person.name }}</td>
+      <td
+        *ngFor="let date of dates"
+        (click)="cycleStatus(person, date)"
+        [ngClass]="person.availability[date]"
+      >
+        <span *ngIf="person.availability[date] === 'available'">A</span>
+        <span *ngIf="person.availability[date] === 'booked'">B</span>
+        <span *ngIf="person.availability[date] === 'unknown'">HI</span>
+        <span *ngIf="person.availability[date] === 'vacation'">V</span>
+        <span *ngIf="person.availability[date] === 'unavailable'">UA</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
