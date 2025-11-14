@@ -28,7 +28,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 
-<----------------------------------------------------------------------Project Setup Steps:------------------------------------------------------------------------------------------->
+<--------------------------------------Project Setup Steps:------------------------------------->
 
 Step 1: npm install -g @angular/cli
 Step 2: ng version
