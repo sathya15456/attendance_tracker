@@ -31,8 +31,12 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 <--------------------------------------Project Setup Steps:------------------------------------->
 
 Step 1: npm install -g @angular/cli
+
 Step 2: ng version
+
 Step 3: npm install / npm install @angular/cli --save-dev
+
 Step 4: ng serve / npm start
+
 
 If yor follow this step you can got the localhost url like http://localhost:4200/
